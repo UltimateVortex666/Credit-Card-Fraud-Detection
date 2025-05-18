@@ -56,7 +56,7 @@ def check_card_with_handyapi(card_number, api_key):
     if response.status_code == 200:
         return response.json()
     else:
-        return {'error': f'HandyAPI request failed with status {response.status_code}'}
+        return {'error': f'Dataset request failed with status {response.status_code}'}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -90,7 +90,7 @@ def index():
                 if 'error' in validation_result:
                     flash(validation_result['error'])
                 else:
-                    flash('Could not verify card type from API.')
+                    flash('Could not verify card type from Dataset.')
                 return redirect(request.url)
 
             return render_template('index.html',
